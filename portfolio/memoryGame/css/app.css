@@ -75,6 +75,8 @@ h1 {
     transform: rotateY(0);
     background: #02b3e4;
     pointer-events: none;
+    padding-top:5%;
+    padding-bottom: 5%;
 }
 
 .deck .card.show {
@@ -85,10 +87,14 @@ h1 {
     cursor: default;
     background: #02ccba;
     font-size: 33px;
+    padding-top:5%;
+    padding-bottom: 5%;
 }
 
 .deck .card.no-match {
     background: #ff000f;
+    padding-top:5%;
+    padding-bottom: 5%;
 }
 
 
