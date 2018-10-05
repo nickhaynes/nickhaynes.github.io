@@ -375,8 +375,13 @@ h1 {
 .portfolio-project {
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-right: 25px;
 }
 
 .portfolioSampleText a {
   text-decoration: underline;
+}
+
+.portfolioIntro {
+  padding: 25px 25px 0px 25px;
 }
