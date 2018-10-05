@@ -238,8 +238,7 @@ html {
   .portfolioSampleText {
     font-size: 12px;
     text-align: justify;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding: 3% 5% 3% 5%;
 }
 }
 
@@ -247,8 +246,7 @@ html {
   .portfolioSampleText {
     font-size: 14px;
     text-align: justify;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding: 15px 25px 15px 25px;
   }
 }
 
@@ -359,4 +357,26 @@ h1 {
   color: #000;
   margin-bottom: 15px;
 }
+}
+
+.portfolio-projects {
+  list-style: none outside none;
+}
+
+.portfolio-projects a{
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.portfolio-projects-nested {
+  list-style: circle outside none;
+}
+
+.portfolio-project {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.portfolioSampleText a {
+  text-decoration: underline;
 }
