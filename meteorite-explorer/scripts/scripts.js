@@ -49,27 +49,35 @@ function createTableRow(address) {
     request.open('GET', address, true)
     request.onload = function() {
         var data = JSON.parse(this.response);
-        data.forEach(meteorite => {
-            var theYear ='';
-            if (meteorite.year == undefined) {
-                theYear = 'undefined';
-            } else {
-                theYear = meteorite.year.substring(0,4);
-            }
+        if (data != '') {
+            data.forEach(meteorite => {
+                var theYear ='';
+                if (meteorite.year == undefined) {
+                    theYear = 'undefined';
+                } else {
+                    theYear = meteorite.year.substring(0,4);
+                }
+                var tableRow = document.createElement('tr');
+                tableRow.classList.add('result');
+                tableRow.append(createRowCell(meteorite.name));
+                tableRow.append(createRowCell(meteorite.id));
+                tableRow.append(createRowCell(meteorite.nametype));
+                tableRow.append(createRowCell(meteorite.recclass));
+                tableRow.append(createRowCell(meteorite.mass));
+                tableRow.append(createRowCell(meteorite.fall));
+                tableRow.append(createRowCell(theYear));
+                tableRow.append(createRowCell(meteorite.reclat));
+                tableRow.append(createRowCell(meteorite.reclong));
+                var element = document.getElementById('search-table');
+                element.appendChild(tableRow);
+            })
+        } else {
             var tableRow = document.createElement('tr');
-            tableRow.classList.add('result');
-            tableRow.append(createRowCell(meteorite.name));
-            tableRow.append(createRowCell(meteorite.id));
-            tableRow.append(createRowCell(meteorite.nametype));
-            tableRow.append(createRowCell(meteorite.recclass));
-            tableRow.append(createRowCell(meteorite.mass));
-            tableRow.append(createRowCell(meteorite.fall));
-            tableRow.append(createRowCell(theYear));
-            tableRow.append(createRowCell(meteorite.reclat));
-            tableRow.append(createRowCell(meteorite.reclong));
-            var element = document.getElementById('search-table');
-            element.appendChild(tableRow);
-        })
+            var alert = document.createElement('p');
+            var alertMessage = "No results were found. Please try your search again.");
+            alert.append(alertMessage);
+            tableRow.append(alert);
+        }
     }
     request.send()
 }
