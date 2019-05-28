@@ -49,7 +49,7 @@ function createTableRow(address) {
     request.open('GET', address, true)
     request.onload = function() {
         var data = JSON.parse(this.response);
-        if (data != '') {
+        if (data !== '') {
             data.forEach(meteorite => {
                 var theYear ='';
                 if (meteorite.year == undefined) {
@@ -74,7 +74,7 @@ function createTableRow(address) {
         } else {
             var tableRow = document.createElement('tr');
             var alert = document.createElement('p');
-            var alertMessage = "No results were found. Please try your search again.");
+            var alertMessage = "No results were found. Please try your search again.";
             alert.append(alertMessage);
             tableRow.append(alert);
         }
