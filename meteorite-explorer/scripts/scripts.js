@@ -49,7 +49,15 @@ function createTableRow(address) {
     request.open('GET', address, true)
     request.onload = function() {
         var data = JSON.parse(this.response);
-        if (data !== '') {
+        if (request.status=="400") {
+            var tableRow = document.createElement('tr');
+            var alert = document.createElement('p');
+            var alertMessage = "Your search returned no results. Please try again.";
+            alert.append(alertMessage);
+            tableRow.append(alert);
+            var element = document.getElementById('search-table');
+            element.appendChild(tableRow);
+        } else {
             data.forEach(meteorite => {
                 var theYear ='';
                 if (meteorite.year == undefined) {
@@ -71,12 +79,6 @@ function createTableRow(address) {
                 var element = document.getElementById('search-table');
                 element.appendChild(tableRow);
             })
-        } else {
-            var tableRow = document.createElement('tr');
-            var alert = document.createElement('p');
-            var alertMessage = "No results were found. Please try your search again.";
-            alert.append(alertMessage);
-            tableRow.append(alert);
         }
     }
     request.send()
@@ -89,11 +91,7 @@ $(document).ready(function() {
 
 // Variables
 
-var target, trigger, submitter, input, filter;
-
-target = document.getElementById('search-results');
-trigger = document.getElementById('search-container');
-submitter = document.getElementById('submit-button');
+var input, filter;
 
 function search() {
     input = document.getElementById('the-input').value;
@@ -101,17 +99,3 @@ function search() {
     createTableHeader();
     createTableRow(searchAddressStart + filter + searchAddressEnd);
 }
-
-// NASA Api Key uPSc3JaQ3mMVxhvfV4du7VVtADUnLD2PG11CRc7e
-
-// https://data.nasa.gov/resource/gh4g-9sfh.json?api_key=uPSc3JaQ3mMVxhvfV4du7VVtADUnLD2PG11CRc7e
-
-
-//function nextSmallerNumber(num) {
-//    num = num.toString().split('');
-//    console.log(num);
-
-
-// }
-
-// nextSmallerNumber(2017);
